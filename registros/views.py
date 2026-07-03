@@ -1,18 +1,37 @@
 from django.shortcuts import render
-from .forms import ComentarioContactoForm 
+from .forms import ComentarioContactoForm
+from .models import ComentarioContacto
+
+
+def contacto(request):
+    form = ComentarioContactoForm()
+    return render(request, "registros/contacto.html", {"form": form})
+
 
 def registrar(request):
     if request.method == 'POST':
         form = ComentarioContactoForm(request.POST)
 
-        if form.is_valid():  # Si los datos recibidos son correctos
-            form.save()      # Inserta en la base de datos
-            return render(request, 'registros/contacto.html')
+        if form.is_valid():
+            form.save()
+
+            comentarios = ComentarioContacto.objects.all()
+
+            return render(
+                request,
+                "registros/consultaContacto.html",
+                {"comentarios": comentarios}
+            )
 
     form = ComentarioContactoForm()
+    return render(request, "registros/contacto.html", {"form": form})
 
-    # Si sale mal se reenvían al formulario los datos ingresados
-    return render(request, 'registros/contacto.html', {'form': form})
 
-def contacto (request):
-    return render(request,"registros/contacto.html")
+def consultaContacto(request):
+    comentarios = ComentarioContacto.objects.all()
+
+    return render(
+        request,
+        "registros/consultaContacto.html",
+        {"comentarios": comentarios}
+    )
