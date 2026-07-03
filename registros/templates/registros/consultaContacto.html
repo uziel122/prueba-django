@@ -6,41 +6,28 @@ Consulta de Comentarios
 {% endblock %}
 
 {% block encabezado_pagina %}
-
 <div class="page-header">
     <div class="page-title">
         <h3>Consulta de Comentarios</h3>
     </div>
 </div>
-
 {% endblock %}
 
 {% block contenido %}
 
 <div class="panel panel-default">
 
-    <div class="panel-heading">
-        <h6 class="panel-title">
-            Comentarios Registrados
-        </h6>
-    </div>
-
     <div class="panel-body">
 
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered">
 
             <thead>
 
                 <tr>
-
                     <th>Usuario</th>
-
                     <th>Mensaje</th>
-
-                    <th>Estado</th>
-
-                    <th>Acción</th>
-
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
 
             </thead>
@@ -50,25 +37,18 @@ Consulta de Comentarios
                 {% for comentario in comentarios %}
 
                 <tr>
-
                     <td>{{ comentario.usuario }}</td>
-
                     <td>{{ comentario.mensaje }}</td>
-
-                    <td>Registrado</td>
-
-                    <td>Correcto</td>
-
+                    <td>Editar</td>
+                    <td>Eliminar</td>
                 </tr>
 
                 {% empty %}
 
                 <tr>
-
                     <td colspan="4">
                         No existen comentarios registrados.
                     </td>
-
                 </tr>
 
                 {% endfor %}
