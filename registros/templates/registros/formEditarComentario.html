@@ -1,0 +1,63 @@
+{% extends "inicio/encabezado.html" %}
+{% load static %}
+
+{% block titulo %}
+Editar Comentario
+{% endblock %}
+
+{% block encabezado_pagina %}
+<div class="page-header">
+    <div class="page-title">
+        <h3>Editar Comentario</h3>
+    </div>
+</div>
+{% endblock %}
+
+{% block contenido %}
+
+<div class="panel panel-default">
+
+    <div class="panel-body">
+
+        <form action="{% url 'Editar' comentario.id %}" method="POST">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Usuario</label>
+
+                <input
+                    type="text"
+                    name="usuario"
+                    class="form-control"
+                    value="{{ comentario.usuario }}"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Mensaje</label>
+
+                <textarea
+                    name="mensaje"
+                    rows="6"
+                    class="form-control"
+                >{{ comentario.mensaje }}</textarea>
+            </div>
+
+            <br>
+
+            <button type="submit" class="btn btn-success">
+                Guardar cambios
+            </button>
+
+            <a href="{% url 'consultaContacto' %}" class="btn btn-default">
+                Cancelar
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

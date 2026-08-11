@@ -19,17 +19,15 @@ Consulta de Comentarios
 
     <div class="panel-body">
 
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped">
 
             <thead>
-
                 <tr>
                     <th>Usuario</th>
                     <th>Mensaje</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
-
             </thead>
 
             <tbody>
@@ -39,14 +37,25 @@ Consulta de Comentarios
                 <tr>
                     <td>{{ comentario.usuario }}</td>
                     <td>{{ comentario.mensaje }}</td>
-                    <td>Editar</td>
-                    <td>Eliminar</td>
+
+                    <td>
+                        <a href="{% url 'ConsultaIndividual' comentario.id %}" class="btn btn-warning btn-sm">
+                            Editar
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="{% url 'Eliminar' comentario.id %}" class="btn btn-danger btn-sm">
+                            Eliminar
+                        </a>
+                    </td>
+
                 </tr>
 
                 {% empty %}
 
                 <tr>
-                    <td colspan="4">
+                    <td colspan="4" class="text-center">
                         No existen comentarios registrados.
                     </td>
                 </tr>
