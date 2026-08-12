@@ -64,7 +64,7 @@ class ComentarioContacto(models.Model):
     def __str__(self):
         return self.mensaje
 
-class Archivos(models.Model):
+class Archivo(models.Model):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField(null=True,blank=True)

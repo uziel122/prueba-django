@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.contrib import messages
-from registros.models import Alumnos
+from registros.models import Alumnos, Archivo
 import datetime
-from .models import Archivo
-from .forms import FormArchivos
-
+from registros.forms import FormArchivos
 
 def principal(request):
     alumnos = Alumnos.objects.all()
@@ -148,7 +146,7 @@ def consultasSQL(request):
     )
 
 
-def archivos(request):
+def archivo(request):
 
     if request.method == "POST":
 

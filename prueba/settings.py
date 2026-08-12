@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-0%^32c(nu-zew_7zmh+#ytve511^^a7beciguu!w8%!=k9&t3g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'uziel06.pythonanywhere.com']
 
 
 # Application definition
@@ -76,12 +76,7 @@ WSGI_APPLICATION = 'prueba.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
 
 
 # Password validation
@@ -119,13 +114,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #CKEDITOR
 
 CKEDITOR_CONFIGS ={
     'default':{
         'toolbar':None,
+    }
+}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'prueba',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
