@@ -32,7 +32,7 @@ urlpatterns = [
     path('', principal, name='principal'),
     path('nombre/', nombre, name='nombre'),
     path('contacto/', views_registros.contacto, name='contacto'),
-    path('formulario/', formulario, name='formulario'),
+    path('formulario/', views_registros.registrar, name='formulario'),
     path('ejemplo/', ejemplo, name='ejemplo'),
 
     # Registrar comentario
