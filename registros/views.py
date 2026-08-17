@@ -4,19 +4,28 @@ from .models import ComentarioContacto
 
 def contacto(request):
     form = ComentarioContactoForm()
-    return render(request, "registros/contacto.html", {"form": form})
+    # Cambiamos la ruta a 'inicio/formulario.html'
+    return render(request, "inicio/formulario.html", {"form": form})
 
 
 def registrar(request):
     if request.method == "POST":
+        # Recibe los datos enviados desde el HTML y se los pasa al Formulario de Django
         form = ComentarioContactoForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            form.save()  # Guarda directamente el objeto en la base de datos
             return redirect("consultaContacto")
+        else:
+            # Si el formulario no es válido, imprime los errores en la terminal/consola
+            print("Errores del formulario:", form.errors)
 
-    form = ComentarioContactoForm()
-    return render(request, "registros/contacto.html", {"form": form})
+    else:
+        # Si la petición es GET, instancia un formulario vacío
+        form = ComentarioContactoForm()
+
+    # Muestra la plantilla correcta mandándole el formulario
+    return render(request, "inicio/formulario.html", {"form": form})
 
 
 def consultaContacto(request):
