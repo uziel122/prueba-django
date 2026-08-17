@@ -15,7 +15,8 @@
 
 {% block contenido %}
 
-
+<form method="POST" action="">
+    {% csrf_token %}
 
     <div class="panel panel-default">
         <div class="panel-body">
@@ -25,7 +26,10 @@
                     Matrícula:
                 </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="matricula">
+                    <input type="text"
+                           class="form-control"
+                           name="matricula"
+                           required>
                 </div>
             </div>
 
@@ -34,7 +38,10 @@
                     Nombre:
                 </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="nombre">
+                    <input type="text"
+                           class="form-control"
+                           name="nombre"
+                           required>
                 </div>
             </div>
 
@@ -43,7 +50,7 @@
                     Carrera:
                 </label>
                 <div class="col-sm-10">
-                    <select class="form-control" name="carrera">
+                    <select class="form-control" name="carrera" required>
                         <option value="">Seleccione una carrera</option>
                         <option value="TIC">TIC</option>
                         <option value="BIO">BIO</option>
@@ -56,16 +63,22 @@
                 <label class="col-sm-2 control-label text-right">
                     Turno:
                 </label>
+
                 <div class="col-sm-10">
                     <label>
-                        <input type="radio" name="turno" value="Matutino" checked>
+                        <input type="radio"
+                               name="turno"
+                               value="Matutino"
+                               checked>
                         Matutino
                     </label>
 
                     &nbsp;&nbsp;&nbsp;
 
                     <label>
-                        <input type="radio" name="turno" value="Vespertino">
+                        <input type="radio"
+                               name="turno"
+                               value="Vespertino">
                         Vespertino
                     </label>
                 </div>
@@ -79,6 +92,7 @@
 
         </div>
     </div>
+
 </form>
 
 {% endblock %}

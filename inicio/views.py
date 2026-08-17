@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from registros.models import Alumnos, Archivo
 import datetime
@@ -28,6 +28,28 @@ def contacto(request):
 
 
 def formulario(request):
+
+    if request.method == "POST":
+
+        matricula = request.POST.get("matricula")
+        nombre = request.POST.get("nombre")
+        carrera = request.POST.get("carrera")
+        turno = request.POST.get("turno")
+
+        Alumnos.objects.create(
+            matricula=matricula,
+            nombre=nombre,
+            carrera=carrera,
+            turno=turno
+        )
+
+        messages.success(
+            request,
+            "Alumno registrado correctamente"
+        )
+
+        return redirect("principal")
+
     return render(request, "inicio/formulario.html", {
         'titulo_pagina': 'Formulario',
         'imagen_pagina': 'inicio/images/registrar.png'
